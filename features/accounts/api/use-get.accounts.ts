@@ -17,5 +17,4 @@ export const useGetAccounts = () => {
       },
    });
    return query;
-   // asf
 };
