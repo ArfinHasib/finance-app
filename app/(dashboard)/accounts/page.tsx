@@ -3,8 +3,25 @@
 import { useNewAccount } from '@/features/accounts/hooks/use-new-accounts';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Plus } from 'lucide-react';
+import { Payment, columns } from './columns';
+import { DataTable } from '@/app/components/data-table';
+
+const data: Payment[] = [
+    {
+        id: '728ed52f',
+        amount: 100,
+        status: 'pending',
+        email: 'm@example.com',
+    },
+    {
+        id: '728ed52f',
+        amount: 50,
+        status: 'success',
+        email: 'a@example.com',
+    },
+];
 
 const AccountsPage = () => {
     const newAccount = useNewAccount();
@@ -20,6 +37,14 @@ const AccountsPage = () => {
                         <Plus className='size-4 mr-2' /> Add New
                     </Button>
                 </CardHeader>
+
+                <CardContent>
+                    <DataTable
+                        filterKey='email'
+                        columns={columns}
+                        data={data}
+                    />
+                </CardContent>
             </Card>
         </div>
     );
